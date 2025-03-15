@@ -1,77 +1,223 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Порешаем?</title>
-    <link rel="stylesheet" href="./CSS/main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&display=swap">
+  <meta charset="utf-8">
+  <title>Awesome cars</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+    }
+    header {
+        background-color: #6c63ff;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .fullscreen-img {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .fullscreen-img img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+    .fullscreen-img span {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+    }
+    .main-img {
+        width: 100%;
+        cursor: pointer;
+    }
+    .gallery {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        padding: 20px;
+        scroll-behavior: smooth;
+    }
+    .gallery {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        gap: 20px;
+        width: 100%;
+        padding: 20px;
+    }
+    .gallery::-webkit-scrollbar {
+        height: 10px;
+    }
+    .gallery::-webkit-scrollbar-thumb {
+        background-color: #6c63ff;
+        border-radius: 5px;
+    }
+    .gallery::-webkit-scrollbar-track {
+        background-color: #ddd;
+    }
+    .card {
+        flex: 0 0 calc(50% - 20px); /* Show two cards at a time */
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        min-width: 200px;
+    }
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+    .card a {
+        display: inline-block;
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .card a:hover {
+        background-color: #5753d3;
+    }
+    .scroll-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 10px;
+    }
+    .scroll-buttons button {
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .scroll-buttons button:hover {
+        background-color: #5753d3;
+    }
+    .scroll-buttons button svg {
+        fill: white;
+        width: 20px;
+        height: 20px;
+    }
+</style>
 </head>
 <body>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-       m[i].l=1*new Date();
-       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    
-       ym(100335091, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-       });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/100335091" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-    <div class="overlay"></div>
-    <div class="particles-container"></div> <!-- Контейнер для искр и частиц -->
-    <div class="content-wrapper">
-        <div class="main_text">
-            <h1>Порешаем?</h1>
-            <p class="subtitle">Всё бесплатно</p>
-            <div class="retro rbtn-big" id="start-button">Начать</div>
-            <p class="description">Кликни “Начать” и давай практиковать задания из 1-й части ЕГЭ.<br>Твой уровень математики вырастет моментально!</p>
-        </div>
-        <div class="equations-container">
-            <div id="typewriter-left" class="typewriter-column"></div>
-            <div id="typewriter-right" class="typewriter-column"></div>
-        </div>
-    </div>
-    <div class="section about">
-        <h2>О сайте</h2>
-        <p>Этот сайт создан для тех, кто хочет быстро и эффективно подготовиться к ЕГЭ по математике. Мы предлагаем бесплатные задания, решения и объяснения, чтобы ты мог практиковаться в любое время.</p>
-    </div>
-    <!-- Новые секции -->
-    <div class="section about">
-        <h2>О сайте</h2>
-        <p>Этот сайт создан для тех, кто хочет быстро и эффективно подготовиться к ЕГЭ по математике. Мы предлагаем бесплатные задания, решения и объяснения, чтобы ты мог практиковаться в любое время.</p>
-    </div>
-    <div class="section_features">
-        <div class="section_fearurse_left">
-            <div class="section_fearurse_left_center">
-                <h2>Что мы предлагаем</h2>
-                <div class="section_fearurse_left_ul">
-                    <ul>
-                        <li>Пошаговые решения задач</li>
-                        <li>Интерактивные примеры</li>
-                        <li>Доступ 24/7</li>
-                        <li>Простой и понятный интерфейс</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="section_fearurse_img">
-            <img class='example_img' src="./public/example.png" alt="example">
-        </div>
-    </div>
-    <div class="section contact">
-        <h2>Связаться с нами</h2>
-        <p>Есть вопросы? Пиши нам на <a href="mailto:mathproba@mail.ru">mathproba@mail.ru</a> или оставляй комментарии в нашем сообществе!</p>
-    </div>
-    <audio id="optimus-theme" src="Task/audio/optimus_theme.mp3"></audio>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ 
+    ym(100335091, "init", {
+         clickmap:true,
+         trackLinks:true,
+         accurateTrackBounce:true,
+         webvisor:true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/100335091" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter --> 
+    <script>
+        navigate
+    </script> 
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" defer></script>
 
-    <script src="./scripts/script.js"></script>
+  <header>
+    <h4 style="text-align: center;">AWESOME CARS</h4>
+    <div class="container-fluid">
+        <p class="text-center">Это машинки Hot Wheels, которые были заколхожены. Масштаб 1:64.</p>
+      </div>
+  </header>
+  <img src="images/panorama.jpg" alt="Header Image" class="main-img" id="mainImg">
+  <div class="fullscreen-img" id="fullscreenImg">
+      <span onclick="closeFullscreen()">&times;</span>
+      <img src="images/egg.jpg" alt="Fullscreen Image" id="fullscreenImgSrc">
+  </div>
+  <main>
+    <div class="gallery" id="gallery"></div>
+      <div class="scroll-buttons">
+          <button onclick="scrollGallery(-200)">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>
+          </button>
+          <button onclick="scrollGallery(200)">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </button>
+      </div>
+
+  </main>
+<script>
+    const galleryData = [
+        { imgSrc: 'images/subaru_front.jpg', altText: 'Субарик', link: 'subaru.html' },
+        { imgSrc: 'images/prelude_front.jpg', altText: 'Хонда', link: 'prelude.html' },
+        { imgSrc: 'images/mercedes_front.jpg', altText: 'Бемельве', link: 'mercedes.html' },
+        { imgSrc: 'images/skyline_front.jpg', altText: 'skyline', link: 'skyline.html' },
+        { imgSrc: 'images/rx7.jpg', altText: 'Rx-7', link: 'rx7.html' },
+        { imgSrc: 'images/nissans.jpg', altText: 'Голые', link: 'uncompleted.html' },
+    ];
+    function createGallery() {
+            const gallery = document.getElementById('gallery');
+            galleryData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const img = document.createElement('img');
+                img.src = item.imgSrc;
+                img.alt = item.altText;
+
+                const link = document.createElement('a');
+                link.href = item.link;
+                link.textContent = item.altText;
+
+                card.appendChild(img);
+                card.appendChild(link);
+                gallery.appendChild(card);
+            });
+        }
+
+        function scrollGallery(amount) {
+            const gallery = document.getElementById('gallery');
+            gallery.scrollBy({ left: amount, behavior: 'smooth' });
+        }
+
+        document.getElementById('mainImg').addEventListener('click', () => {
+            const fullscreen = document.getElementById('fullscreenImg');
+            const fullscreenImgSrc = document.getElementById('fullscreenImgSrc');
+            fullscreen.style.display = 'flex';
+            setTimeout(() => alert("Пасхалко!1! Пасхалко!!!"), 150);
+        });
+
+        function closeFullscreen() {
+            const fullscreen = document.getElementById('fullscreenImg');
+            fullscreen.style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', createGallery);
+</script>
 </body>
 </html>
