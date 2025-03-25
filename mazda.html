@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-   <title>Mercedes</title>
+   <title>Mazda</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Mercedes</title>
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style.css" />
     <!--  Responsive -->
     <link rel="stylesheet" href="responsive.css" />
+    <link rel="stylesheet" href="dino-style.css" />
 </head>
 
 <body>
@@ -33,6 +34,29 @@
    });
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/100335091" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script>
+   var clickedTimes = 0
+   var enabled = false
+   dialog = ['Я серьёзно, она бесполезна', 'Не понятно?', 'Ну-ну, кликай, кликай']
+   function onBTNclick () {
+      if (clickedTimes < 2) {
+         alert(dialog[clickedTimes])
+         clickedTimes++
+      } else {
+         if (!enabled) {
+            enabled = true;
+            ym(100335091,'reachGoal','easter-egg-3')
+
+            alert("Пасхалко!!!! Игра доступна")
+            document.getElementById("game").setAttribute("style", "display: block;")
+            init();
+
+         }
+      }
+   }
+</script>
+
 <!-- /Yandex.Metrika counter -->
     <style>
                 .fullscreen-img {
@@ -128,15 +152,7 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-         const a = document.getElementById("пасхалко")
-        a.onclick = function () {
-            ym(100335091,'reachGoal','easter-egg-2');
-            var audio = new Audio('https://soundbuttonsworld.com/api/upload/download?id=a5598bcd-98d9-4899-8ef0-c44c28db7137.mp3');
-            audio.play().finally(() =>  alert("Пасхалко"));
-        }
-            document.getElementById("front")?.addEventListener("click", () => openFullscreen("mercedes_front.jpg"))
-            document.getElementById("rare")?.addEventListener("click", () => openFullscreen("mercedes_rare.jpg"))
-            document.getElementById("interior")?.addEventListener("click", () => openFullscreen("mercedes_interior.jpg"))
+            document.getElementById("front")?.addEventListener("click", () => openFullscreen("rx7.jpg"))
             document.getElementById('send-form').addEventListener('submit', function(event) {
                event.preventDefault(); 
 
@@ -171,7 +187,7 @@
         });
         });
 
-        fetch("api/comments?tag=mercedes-e500")
+        fetch("api/comments?tag=mazda-rx7")
          .then(response => {
             let content
            if (!response.ok) {
@@ -225,6 +241,14 @@
                            </ul>
                         </div>
                      </div>
+                     <button class="gen-btn-container" onclick="onBTNclick()">
+                        <a class="gen-button" style="color: aliceblue;">
+                            <div class="gen-button-block">
+                                <span class="gen-button-line-left"></span>
+                                <span class="gen-button-text">Бесполезная кнопка</span>
+                            </div>
+                        </a>
+                    </button>
                      <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -253,57 +277,19 @@
                             <div class="row flex-row-reverse align-items-center h-100">
                                <div class="col-xl-6">
                                   <div class="gen-front-image"  >
-                                     <img src="mercedes_front.jpg" alt="owl-carousel-banner-image">
+                                     <img src="rx7.jpg" alt="owl-carousel-banner-image">
                                   </div>
                                </div>
                                <div class="col-xl-6">
-                                  <div class="gen-tag-line"><span>Mercedes</span></div>
+                                  <div class="gen-tag-line"><span>Mazda</span></div>
                                   <div class="gen-movie-info">
-                                     <h3>E500</h3>
+                                     <h3>Rx-7</h3>
                                   </div>
                                </div>
                             </div>
                          </div>
                       </div>
                    </div>
-                   <div class="item" id="rare">
-                    <div class="gen-movie-contain-style-2 h-100">
-                       <div class="container h-100">
-                          <div class="row flex-row-reverse align-items-center h-100">
-                             <div class="col-xl-6">
-                                <div class="gen-front-image">
-                                   <img src="mercedes_rare.jpg" alt="owl-carousel-banner-image">
-                                </div>
-                             </div>
-                             <div class="col-xl-6">
-                                <div class="gen-tag-line"><span>Mercedes</span></div>
-                                <div class="gen-movie-info">
-                                   <h3>E500</h3>
-                                </div>
-                             </div>
-                          </div>
-                       </div>
-                    </div>
-                    </div>
-                    <div class="item" id="interior">
-                     <div class="gen-movie-contain-style-2 h-100">
-                        <div class="container h-100">
-                           <div class="row flex-row-reverse align-items-center h-100">
-                              <div class="col-xl-6">
-                                 <div class="gen-front-image">
-                                    <img src="mercedes_interior.jpg" alt="owl-carousel-banner-image">
-                                 </div>
-                              </div>
-                              <div class="col-xl-6">
-                                 <div class="gen-tag-line"><span>Mercedes</span></div>
-                                 <div class="gen-movie-info">
-                                    <h3>E500</h3>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
                 </div>
              </div>
           </div>
@@ -311,6 +297,17 @@
     </div>
  </section>
  <!-- owl-carousel Banner End -->
+  <!-- контейнер игрового поля -->
+<div id="game" style="display: none;" class="game">
+   <!-- контейнер динозаврика -->
+   <div id="dino"></div>
+   <!-- контейнер кактуса -->
+   <div id="cactus"></div>
+   <div id="death-counter">0</div>
+ </div>
+ 
+ <!-- подключаем скрипт -->
+ <script src="dino-script.js"></script>
 
     <!-- Single movie Start -->
     <section class="gen-section-padding-3 gen-single-movie">
@@ -322,20 +319,10 @@
                             <div class="col-lg-12">
                                 <div class="gen-single-movie-info">
                                     <p>
-                                       Мерседес. Вторая попытка покрасить машинку, очень даже удачная. Хотел поставить на него AMG диски, но по опросам, людям понравились эти аля Enikey. Все таки я поставлю AMG.
-                                       <br/>
-                                       Забавно, но я поставил желтые номера, подумав, что выглядит не плохо. <span id="пасхалко">Нажать здесь, чтобы пасхалко.</span> Однако такие номера могут получить лишь малолитражные автомобили с низким налогом. Может такие номера говорят о статусе владельца?
+                                       Первая попытка красить и лепить машинку. Краска в 1000 слоев, кривая лепка.
+                                       <br>
+                                       Кое-как зачистил, кое-как обрезал и слепил. Нашел какую-то краску у знакомого.
                                     </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="pm-inner">
-                                    <div class="gen-more-like">
-                                        <h5 class="gen-more-title">Референс</h5>
-                                        <div class="col-12">
-                                          <img style="width: fit-content;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZI7ExJSJh5AO4IThjOn2TmectffaeGKKs6lMsmpU4GtIt9diN7odmIcjwoHGr4Y5B1sA&usqp=CAU">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -366,7 +353,7 @@
                           <input type="submit" value="Отправить" class="mt-4">
                      </div>
                   </div>
-                  <input name="tag" value="mercedes-e500" hidden>
+                  <input name="tag" value="mazda-rx7" hidden>
                </form>
            </div>
          </div>

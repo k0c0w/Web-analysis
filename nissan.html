@@ -2,10 +2,9 @@
 <html lang="ru">
 
 <head>
-   <title>Mercedes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Mercedes</title>
+    <title>Nissan</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
     <!-- CSS bootstrap-->
@@ -128,15 +127,8 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-         const a = document.getElementById("пасхалко")
-        a.onclick = function () {
-            ym(100335091,'reachGoal','easter-egg-2');
-            var audio = new Audio('https://soundbuttonsworld.com/api/upload/download?id=a5598bcd-98d9-4899-8ef0-c44c28db7137.mp3');
-            audio.play().finally(() =>  alert("Пасхалко"));
-        }
-            document.getElementById("front")?.addEventListener("click", () => openFullscreen("mercedes_front.jpg"))
-            document.getElementById("rare")?.addEventListener("click", () => openFullscreen("mercedes_rare.jpg"))
-            document.getElementById("interior")?.addEventListener("click", () => openFullscreen("mercedes_interior.jpg"))
+            document.getElementById("front")?.addEventListener("click", () => openFullscreen("skyline_front.jpg"))
+            document.getElementById("rare")?.addEventListener("click", () => openFullscreen("skyline_rare.jpg"))
             document.getElementById('send-form').addEventListener('submit', function(event) {
                event.preventDefault(); 
 
@@ -171,7 +163,7 @@
         });
         });
 
-        fetch("api/comments?tag=mercedes-e500")
+        fetch("api/comments?tag=nissan-skyline")
          .then(response => {
             let content
            if (!response.ok) {
@@ -211,7 +203,7 @@
                <div class="col-lg-12">
                   <nav class="navbar navbar-expand-lg navbar-light">
                      <a style="color: aliceblue;" class="navbar-brand" href="index.html">
-                        My cars
+                        Мачинка
                      </a>
                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div id="gen-menu-contain" class="gen-menu-contain">
@@ -253,13 +245,13 @@
                             <div class="row flex-row-reverse align-items-center h-100">
                                <div class="col-xl-6">
                                   <div class="gen-front-image"  >
-                                     <img src="mercedes_front.jpg" alt="owl-carousel-banner-image">
+                                     <img src="skyline_front.jpg" alt="owl-carousel-banner-image">
                                   </div>
                                </div>
                                <div class="col-xl-6">
-                                  <div class="gen-tag-line"><span>Mercedes</span></div>
+                                  <div class="gen-tag-line"><span>Nissan</span></div>
                                   <div class="gen-movie-info">
-                                     <h3>E500</h3>
+                                     <h3>Skyline</h3>
                                   </div>
                                </div>
                             </div>
@@ -272,38 +264,19 @@
                           <div class="row flex-row-reverse align-items-center h-100">
                              <div class="col-xl-6">
                                 <div class="gen-front-image">
-                                   <img src="mercedes_rare.jpg" alt="owl-carousel-banner-image">
+                                   <img src="skyline_rare.jpg" alt="owl-carousel-banner-image">
                                 </div>
                              </div>
                              <div class="col-xl-6">
-                                <div class="gen-tag-line"><span>Mercedes</span></div>
+                                <div class="gen-tag-line"><span>Nissan</span></div>
                                 <div class="gen-movie-info">
-                                   <h3>E500</h3>
+                                   <h3>Skyline</h3>
                                 </div>
                              </div>
                           </div>
                        </div>
                     </div>
                     </div>
-                    <div class="item" id="interior">
-                     <div class="gen-movie-contain-style-2 h-100">
-                        <div class="container h-100">
-                           <div class="row flex-row-reverse align-items-center h-100">
-                              <div class="col-xl-6">
-                                 <div class="gen-front-image">
-                                    <img src="mercedes_interior.jpg" alt="owl-carousel-banner-image">
-                                 </div>
-                              </div>
-                              <div class="col-xl-6">
-                                 <div class="gen-tag-line"><span>Mercedes</span></div>
-                                 <div class="gen-movie-info">
-                                    <h3>E500</h3>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
                 </div>
              </div>
           </div>
@@ -322,20 +295,12 @@
                             <div class="col-lg-12">
                                 <div class="gen-single-movie-info">
                                     <p>
-                                       Мерседес. Вторая попытка покрасить машинку, очень даже удачная. Хотел поставить на него AMG диски, но по опросам, людям понравились эти аля Enikey. Все таки я поставлю AMG.
-                                       <br/>
-                                       Забавно, но я поставил желтые номера, подумав, что выглядит не плохо. <span id="пасхалко">Нажать здесь, чтобы пасхалко.</span> Однако такие номера могут получить лишь малолитражные автомобили с низким налогом. Может такие номера говорят о статусе владельца?
+                                       Первая машинка, которую я хотел кастомить. Было страшно ее испортить, и стоила она дороговато. Не было идей по кастому, сама по себе моделька хорошая.
+                                       <br>
+                                       Решился только на кастом интерьера, колеса поставил, пороги и покрасил фары. 
+                                       <br> 
+                                       Спортивная лента мне казалась очень крутой, но это какойто позор. Ее не снять и выглядит не очень.
                                     </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="pm-inner">
-                                    <div class="gen-more-like">
-                                        <h5 class="gen-more-title">Референс</h5>
-                                        <div class="col-12">
-                                          <img style="width: fit-content;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZI7ExJSJh5AO4IThjOn2TmectffaeGKKs6lMsmpU4GtIt9diN7odmIcjwoHGr4Y5B1sA&usqp=CAU">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -366,7 +331,7 @@
                           <input type="submit" value="Отправить" class="mt-4">
                      </div>
                   </div>
-                  <input name="tag" value="mercedes-e500" hidden>
+                  <input name="tag" value="nissan-skyline" hidden>
                </form>
            </div>
          </div>

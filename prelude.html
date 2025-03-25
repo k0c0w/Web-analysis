@@ -1,36 +1,41 @@
-<!-- details.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honda</title>
+   <title>Honda</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Subaru</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- CSS bootstrap-->
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <!--  Style -->
+    <link rel="stylesheet" href="style.css" />
+    <!--  Responsive -->
+    <link rel="stylesheet" href="responsive.css" />
+</head>
+
+<body>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(100335091, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/100335091" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-        header {
-            background-color: #6c63ff;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        header a {
-            color: white;
-            text-decoration: none;
-            background-color: #5753d3;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-top: 10px;
-            display: inline-block;
-        }
-        header a:hover {
-            background-color: #4642b3;
-        }
-        .fullscreen-img {
+                .fullscreen-img {
             display: none;
             position: fixed;
             top: 0;
@@ -54,114 +59,17 @@
             color: white;
             cursor: pointer;
         }
-        .gallery {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px;
-            scroll-behavior: smooth;
-        }
-        .gallery {
-            flex-wrap: nowrap;
-            overflow-x: scroll;
-            gap: 20px;
-            width: 100%;
-            padding: 20px;
-        }
-        .gallery::-webkit-scrollbar {
-            height: 10px;
-        }
-        .gallery::-webkit-scrollbar-thumb {
-            background-color: #6c63ff;
-            border-radius: 5px;
-        }
-        .gallery::-webkit-scrollbar-track {
-            background-color: #ddd;
-        }
-        .card {
-            flex: 0 0 calc(50% - 20px); /* Show two cards at a time */
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center;
-            min-width: 200px;
-        }
-        .card img {
-            width: 100%;
-            height: auto;
-            cursor: pointer;
-        }
-        .details p {
-            margin: 20px;
-            line-height: 1.6;
-            color: #333;
-            text-align: center;
-        }
     </style>
-</head>
-<body>
-      <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
- 
-    ym(100335091, "init", {
-         clickmap:true,
-         trackLinks:true,
-         accurateTrackBounce:true,
-         webvisor:true
-    });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/100335091" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter --> 
-    <header>
-        <h1>Honda</h1>
-        <a href="index.html">Назад</a>
-    </header>
-    <main>
-        <div class="gallery" id="gallery"></div>
-        <p>
-            Вот прелюд да, вот... Там есть интерьер: ковши, руль; на крыше сидит девушка.
-        </p>
-        <p>
-            Возможно она водитель.
-        </p>
-    </main>
-    <div class="fullscreen-img" id="fullscreenImg">
-        <span onclick="closeFullscreen()">&times;</span>
-        <img src="" alt="Fullscreen Image" id="fullscreenImgSrc">
-    </div>
     <script>
-        const galleryData = [
-            { imgSrc: 'images/prelude_front.jpg', altText: 'Detail Image 1' },
-            { imgSrc: 'images/prelude_interior.jpg', altText: 'Detail Image 3' }
-        ];
 
-        function createGallery() {
-            const gallery = document.getElementById('gallery');
-            galleryData.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'card';
 
-                const img = document.createElement('img');
-                img.src = item.imgSrc;
-                img.alt = item.altText;
-                img.addEventListener('click', () => openFullscreen(item.imgSrc));
-
-                card.appendChild(img);
-                gallery.appendChild(card);
-            });
-        }
-
+        
         function openFullscreen(src) {
             const fullscreen = document.getElementById('fullscreenImg');
             const fullscreenImgSrc = document.getElementById('fullscreenImgSrc');
             fullscreenImgSrc.src = src;
             fullscreen.style.display = 'flex';
+            ym(100335091,'reachGoal','open-image')
         }
 
         function closeFullscreen() {
@@ -169,7 +77,344 @@
             fullscreen.style.display = 'none';
         }
 
-        document.addEventListener('DOMContentLoaded', createGallery);
+        
+        function createCommentNode({text, id, username}) {
+            ul = document.createElement("ul")
+            if (username) {
+               li = document.createElement("li")
+               span = document.createElement("span")
+               span.innerHTML = username
+               li.appendChild(span)
+               ul.appendChild(li)
+            }
+
+            li = document.createElement("li")
+            a = document.createElement("a")
+            link = `#${id}`
+            a.href = link
+            a.text =link
+            li.appendChild(a)
+            ul.appendChild(li)
+
+            div2 = document.createElement("div")
+            div2.className = "gen-movie-meta-holder"
+            div2.appendChild(ul)
+
+            div = document.createElement("div")
+            div.className = "gen-movie-info"
+            p = document.createElement("p")
+            p.innerHTML = text
+            div.appendChild(p)
+
+            genMovieInfoContain = document.createElement("div")
+            genMovieInfoContain.className = "gen-info-contain"
+            genMovieInfoContain.appendChild(div)
+            genMovieInfoContain.appendChild(div2)
+
+            genMovieContain = document.createElement("div")
+            genMovieContain.className = "gen-movie-contain"
+            genMovieContain.appendChild(genMovieInfoContain)
+
+            genCarousel = document.createElement("div")
+            genCarousel.className = "gen-carousel-movies-style-3 movie-grid style-3"
+            genCarousel.appendChild(genMovieContain)
+
+            rootDiv = document.createElement("div")
+            rootDiv.className = "col-12"
+            rootDiv.appendChild(genCarousel);
+
+            return rootDiv
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("front")?.addEventListener("click", () => openFullscreen("prelude_front.jpg"))
+            document.getElementById("interior")?.addEventListener("click", () => openFullscreen("prelude_interior.jpg"))
+            document.getElementById('send-form').addEventListener('submit', function(event) {
+               event.preventDefault(); 
+
+               const formData = new FormData(this);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value; 
+            });
+
+                fetch('/api/comments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', 
+                    },
+                    body: JSON.stringify(formObject) 
+                })
+               .then(response => {
+                   if (response.ok) {
+                     response.json().then(data => {
+                        const t = document.getElementById("comments-container")
+                        t.appendChild(createCommentNode(data))
+                        document.getElementById('send-form').reset();
+                     })
+                   } else {
+                       alert('Не удалось сохранить.');
+                   }
+               })
+               .catch(error => {
+                  alert('Не удалось отправить.');
+                   console.error('Error:', error);
+               });
+        });
+        });
+
+        fetch("api/comments?tag=honda-prelude")
+         .then(response => {
+            let content
+           if (!response.ok) {
+               content = '<div>Не удалось загрузить комментарии.</div>'
+               return Promise.resolve(content)
+           }
+
+           return response.json(); // Convert the response to JSON
+         })
+         .then(data => {
+            const t = document.getElementById("comments-container")
+           if (typeof data == "string") {
+            t.innerHTML = data
+           } else {
+               for(let i = 0; i < data.length; i++) {
+                  t.appendChild(createCommentNode(data[i]))
+               }
+           }
+         })
+         .catch(error => {
+           console.error('There was a problem with the fetch operation:', error);
+         });
+
+       function onSubmit() {
+
+       }  
     </script>
+        <div class="fullscreen-img" id="fullscreenImg">
+            <span onclick="closeFullscreen()">&times;</span>
+            <img src="" alt="Fullscreen Image" id="fullscreenImgSrc">
+        </div>
+   <!--========== Header ==============-->
+   <header id="gen-header" class="gen-header-style-1 gen-has-sticky">
+      <div class="gen-bottom-header">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12">
+                  <nav class="navbar navbar-expand-lg navbar-light">
+                     <a style="color: aliceblue;" class="navbar-brand" href="index.html">
+                        My cars
+                     </a>
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div id="gen-menu-contain" class="gen-menu-contain">
+                           <ul id="gen-main-menu" class="navbar-nav ml-auto">
+                              <li class="menu-item">
+                                 <a href="index.html" aria-current="page">Главная</a>
+                              </li>
+                              <li class="menu-item">
+                                 <a href="about.html">Зачем всё это?</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                     </button>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+   </header>
+   <!--========== Header ==============-->
+
+   <!-- owl-carousel Banner Start -->
+   <section class="pt-0 pb-0">
+    <div class="container-fluid px-0">
+       <div class="row no-gutters">
+          <div class="col-12">
+             <div class="gen-banner-movies banner-style-2">
+                <div class="owl-carousel owl-loaded owl-drag" data-dots="false" data-nav="true" data-desk_num="1"
+                   data-lap_num="1" data-tab_num="1" data-mob_num="1" data-mob_sm="1" data-autoplay="true"
+                   data-loop="true" data-margin="0">
+                   <div class="item" id="front">
+                      <div class="gen-movie-contain-style-2 h-100">
+                         <div class="container h-100">
+                            <div class="row flex-row-reverse align-items-center h-100">
+                               <div class="col-xl-6">
+                                  <div class="gen-front-image"  >
+                                     <img src="prelude_front.jpg" alt="owl-carousel-banner-image">
+                                  </div>
+                               </div>
+                               <div class="col-xl-6">
+                                  <div class="gen-tag-line"><span>Honda</span></div>
+                                  <div class="gen-movie-info">
+                                     <h3>Prelude</h3>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="item" id="interior">
+                    <div class="gen-movie-contain-style-2 h-100">
+                       <div class="container h-100">
+                          <div class="row flex-row-reverse align-items-center h-100">
+                             <div class="col-xl-6">
+                                <div class="gen-front-image">
+                                   <img src="prelude_interior.jpg" alt="owl-carousel-banner-image">
+                                </div>
+                             </div>
+                             <div class="col-xl-6">
+                                <div class="gen-tag-line"><span>Honda</span></div>
+                                <div class="gen-movie-info">
+                                   <h3>Prelude</h3>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+ <!-- owl-carousel Banner End -->
+
+    <!-- Single movie Start -->
+    <section class="gen-section-padding-3 gen-single-movie">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-12">
+                    <div class="gen-single-movie-wrapper style-1">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="gen-single-movie-info">
+                                    <p>
+                                       Последняя машинка, которую я делал года 3 назад. Решил собирать японцев, искал недорогие корпуса. Был у меня еще цивик, но его я подарил. В этой машинке сделал европейский развал (у них там нельзя чтобы колесо выходило за борт машины), интерьер, люк, аэрографию. Посадил фигурку сверху, в целом мне нравится, но есть косяк сзади-изза развала машинка не совсем закрывается, а резать интерьер не хотелось.  
+                                       <br>
+                                       Хотел ей сделать светящиеся фары и розовую подсветку днища, но так и не дошли руки.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="pm-inner">
+                                    <div class="gen-more-like">
+                                        <h5 class="gen-more-title">Референс</h5>
+                                        <div class="col-12">
+                                          <img style="width: fit-content;" src="https://i.pinimg.com/736x/b2/ba/e0/b2bae03a2e52659e2c1551e7be9216a7.jpg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Комментарии -->
+        <div class="container">
+         <h5 class="gen-more-title" style="text-align: center;">Комментарии</h5>
+         <div class="row" style="padding-top: 10px;">
+             <div class="col-lg-12">
+                 <div class="row" id="comments-container">
+                     <!--Comment-->
+
+                 </div>
+             </div>
+           </div>
+           <div class="col-lg-12">
+               <form id="send-form">
+                  <div class="row gt-form">
+                     <div class="col-md-12 mb-4">
+                        <input type="text" name="username" placeholder="никнейм (необязательно)">
+                     </div>
+                     <div class="col-md-12 mb-4">
+                        <textarea name="text" rows="6" placeholder="Комментарии"></textarea><br>
+                          <input type="submit" value="Отправить" class="mt-4">
+                     </div>
+                  </div>
+                  <input name="tag" value="honda-prelude" hidden>
+               </form>
+           </div>
+         </div>
+     </div>
+     <!-- Комментарии -->
+    </section>
+    <!-- Single movie End -->
+   
+
+   <!-- footer start -->
+   <footer id="gen-footer">
+    <div class="gen-footer-style-1">
+       <div class="gen-footer-top">
+          <div class="container">
+             <div class="row">
+                <div class="col-xl-3 col-md-6">
+                   <div class="widget">
+                      <div class="row">
+                         <div class="col-sm-12">
+                            <p>Все машинки были заколхожены в масштабе 1:64.</p>
+                            <ul class="social-link">
+                               <li>
+                                  <a href="https://t.me/djdjdndndmdlablacarsk" class="facebook">
+                                     <div>
+                                       <span>Мы в Telegram</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="rgb(105, 180, 255)" width="32px" height="32px" viewBox="0 0 32 32" version="1.1">
+                                           <title>telegram</title>
+                                           <path d="M22.122 10.040c0.006-0 0.014-0 0.022-0 0.209 0 0.403 0.065 0.562 0.177l-0.003-0.002c0.116 0.101 0.194 0.243 0.213 0.403l0 0.003c0.020 0.122 0.031 0.262 0.031 0.405 0 0.065-0.002 0.129-0.007 0.193l0-0.009c-0.225 2.369-1.201 8.114-1.697 10.766-0.21 1.123-0.623 1.499-1.023 1.535-0.869 0.081-1.529-0.574-2.371-1.126-1.318-0.865-2.063-1.403-3.342-2.246-1.479-0.973-0.52-1.51 0.322-2.384 0.221-0.23 4.052-3.715 4.127-4.031 0.004-0.019 0.006-0.040 0.006-0.062 0-0.078-0.029-0.149-0.076-0.203l0 0c-0.052-0.034-0.117-0.053-0.185-0.053-0.045 0-0.088 0.009-0.128 0.024l0.002-0.001q-0.198 0.045-6.316 4.174c-0.445 0.351-1.007 0.573-1.619 0.599l-0.006 0c-0.867-0.105-1.654-0.298-2.401-0.573l0.074 0.024c-0.938-0.306-1.683-0.467-1.619-0.985q0.051-0.404 1.114-0.827 6.548-2.853 8.733-3.761c1.607-0.853 3.47-1.555 5.429-2.010l0.157-0.031zM15.93 1.025c-8.302 0.020-15.025 6.755-15.025 15.060 0 8.317 6.742 15.060 15.060 15.060s15.060-6.742 15.060-15.060c0-8.305-6.723-15.040-15.023-15.060h-0.002q-0.035-0-0.070 0z"/>
+                                        </svg>
+                                     </div>
+                                  </a>
+                               </li>
+                            </ul>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </footer>
+
+    <!-- Back-to-Top start -->
+    <div id="back-to-top">
+        <a class="top" id="top" href="#top"> <i class="ion-ios-arrow-up"></i> </a>
+    </div>
+    <!-- Back-to-Top end -->
+
+    <!-- js-min -->
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="asyncloader.min.js"></script>
+    <!-- JS bootsp -->
+    <script src="bootstrap.min.js"></script>
+    <!-- owl-carol -->
+    <script src="owl.carousel.min.js"></script>
+    <!-- counter--->
+    <script src="jquery.waypoints.min.js"></script>
+    <script src="jquery.counterup.min.js"></script>
+    <!-- popper-j-->
+    <script src="popper.min.js"></script>
+    <script src="swiper-bundle.min.js"></script>
+    <!-- Iscotop -->
+    <script src="isotope.pkgd.min.js"></script>
+
+    <script src="jquery.magnific-popup.min.js"></script>
+
+    <script src="slick.min.js"></script>
+
+    <script src="streamlab-core.js"></script>
+
+    <script src="script.js"></script>
+
+
 </body>
+
 </html>
