@@ -60,7 +60,22 @@
         }
     </style>
     <script>
-
+       function wouldLikeToBuy(tag) {
+         ym(100335091,'reachGoal',`would-like-to-buy-${tag}`);
+         fetch(`/api/would-like-to-buy?tag=${tag}`, {
+            method: "POST",
+         })
+         .then(response => {
+            if (response.ok) {
+               response.json().then( data=> {
+                  const {value, tag} = data;
+                  const counter = document.getElementById("counter")
+                  counter.innerText = value
+               })
+            }
+         })
+         .catch();
+       }  
 
         
         function openFullscreen(src) {
@@ -164,6 +179,21 @@
         });
         });
 
+        fetch("api/would-like-to-buy?tag=subaru")
+         .then(response => {
+           if (response.ok) {
+            response.json().then(data => {
+               const {value }=data
+               const counter = document.getElementById("counter")
+               counter.innerText = value
+            })
+               
+           }
+
+         })
+         .catch(error => {
+           console.error('There was a problem with the fetch operation:', error);
+         });
         fetch("api/comments?tag=subaru-impreza")
          .then(response => {
             let content
@@ -314,6 +344,16 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="gen-single-movie-info">
+                                 <div class="gen-single-meta-holder" style="align-items: center;">
+                                    <ul>
+                                        <li class="gen-sen-rating" onclick="wouldLikeToBuy('subaru')">Хочу купить</li>
+                                        <li>
+                                            <i class="fas fa-eye">
+                                            </i>
+                                            <span><span id="counter">0</span> Хотели бы купить</span>
+                                        </li>
+                                    </ul>
+                                 </div>
                                     <p>Четвёртая по-счёту машинка. Попался кузов старой импрезы, хотел сделать чтото полуспортивное в сторону ралли, однако наткнулся на такой же кузов в стиле itasha.
                                        Вобщем решил повторить его, однако не нашел нужной картинки девушки, поэтому поменялись цвета. Кенгурятник придает этой машине шарма. Внтури я сделал ковшы, раму, ручники и датчики. В передние колеса сооружен рычажный механизмы, поэтому они поворчаиваются. Ну и как же без банки на субару и желтых-золотых колес? В целом и голубой цвет отсылает к классике. 
                                     </p>

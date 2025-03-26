@@ -164,6 +164,22 @@
         });
         });
 
+        fetch("api/would-like-to-buy?tag=prelude")
+         .then(response => {
+           if (response.ok) {
+            response.json().then(data => {
+               const {value }=data
+               const counter = document.getElementById("counter")
+               counter.innerText = value
+            })
+               
+           }
+
+         })
+         .catch(error => {
+           console.error('There was a problem with the fetch operation:', error);
+         });
+
         fetch("api/comments?tag=honda-prelude")
          .then(response => {
             let content
@@ -188,8 +204,21 @@
            console.error('There was a problem with the fetch operation:', error);
          });
 
-       function onSubmit() {
-
+         function wouldLikeToBuy(tag) {
+         ym(100335091,'reachGoal',`would-like-to-buy-${tag}`);
+         fetch(`/api/would-like-to-buy?tag=${tag}`, {
+            method: "POST",
+         })
+         .then(response => {
+            if (response.ok) {
+               response.json().then( data=> {
+                  const {value, tag} = data;
+                  const counter = document.getElementById("counter")
+                  counter.innerText = value
+               })
+            }
+         })
+         .catch();
        }  
     </script>
         <div class="fullscreen-img" id="fullscreenImg">
@@ -295,6 +324,16 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="gen-single-movie-info">
+                                 <div class="gen-single-meta-holder" style="align-items: center;">
+                                    <ul>
+                                        <li class="gen-sen-rating" onclick="wouldLikeToBuy('prelude')">Хочу купить</li>
+                                        <li>
+                                            <i class="fas fa-eye">
+                                            </i>
+                                            <span><span id="counter">0</span> Хотели бы купить</span>
+                                        </li>
+                                    </ul>
+                                 </div>
                                     <p>
                                        Последняя машинка, которую я делал года 3 назад. Решил собирать японцев, искал недорогие корпуса. Был у меня еще цивик, но его я подарил. В этой машинке сделал европейский развал (у них там нельзя чтобы колесо выходило за борт машины), интерьер, люк, аэрографию. Посадил фигурку сверху, в целом мне нравится, но есть косяк сзади-изза развала машинка не совсем закрывается, а резать интерьер не хотелось.  
                                        <br>

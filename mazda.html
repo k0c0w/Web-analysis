@@ -40,19 +40,18 @@
    var enabled = false
    dialog = ['Я серьёзно, она бесполезна', 'Не понятно?', 'Ну-ну, кликай, кликай']
    function onBTNclick () {
-      if (clickedTimes < 2) {
+      if (clickedTimes < 3) {
          alert(dialog[clickedTimes])
          clickedTimes++
-      } else {
-         if (!enabled) {
+         ym(100335091,'reachGoal',`useless-button-${clickedTimes}`)
+      } 
+      else if (!enabled) {
             enabled = true;
             ym(100335091,'reachGoal','easter-egg-3')
 
             alert("Пасхалко!!!! Игра доступна")
             document.getElementById("game").setAttribute("style", "display: block;")
             init();
-
-         }
       }
    }
 </script>
@@ -187,6 +186,21 @@
         });
         });
 
+        fetch("api/would-like-to-buy?tag=mazda")
+         .then(response => {
+           if (response.ok) {
+            response.json().then(data => {
+               const {value }=data
+               const counter = document.getElementById("counter")
+               counter.innerText = value
+            })
+               
+           }
+
+         })
+         .catch(error => {
+           console.error('There was a problem with the fetch operation:', error);
+         });
         fetch("api/comments?tag=mazda-rx7")
          .then(response => {
             let content
@@ -211,8 +225,21 @@
            console.error('There was a problem with the fetch operation:', error);
          });
 
-       function onSubmit() {
-
+       function wouldLikeToBuy(tag) {
+         ym(100335091,'reachGoal',`would-like-to-buy-${tag}`);
+         fetch(`/api/would-like-to-buy?tag=${tag}`, {
+            method: "POST",
+         })
+         .then(response => {
+            if (response.ok) {
+               response.json().then( data=> {
+                  const {value, tag} = data;
+                  const counter = document.getElementById("counter")
+                  counter.innerText = value
+               })
+            }
+         })
+         .catch();
        }  
     </script>
         <div class="fullscreen-img" id="fullscreenImg">
@@ -293,6 +320,7 @@
                 </div>
              </div>
           </div>
+
        </div>
     </div>
  </section>
@@ -318,11 +346,21 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="gen-single-movie-info">
-                                    <p>
-                                       Первая попытка красить и лепить машинку. Краска в 1000 слоев, кривая лепка.
-                                       <br>
-                                       Кое-как зачистил, кое-как обрезал и слепил. Нашел какую-то краску у знакомого.
-                                    </p>
+                                 <div class="gen-single-meta-holder" style="align-items: center;">
+                                    <ul>
+                                        <li class="gen-sen-rating" onclick="wouldLikeToBuy('mazda')">Хочу купить</li>
+                                        <li>
+                                            <i class="fas fa-eye">
+                                            </i>
+                                            <span><span id="counter">0</span> Хотели бы купить</span>
+                                        </li>
+                                    </ul>
+                                 </div>
+                                 <p>
+                                    Первая попытка красить и лепить машинку. Краска в 1000 слоев, кривая лепка.
+                                    <br>
+                                    Кое-как зачистил, кое-как обрезал и слепил. Нашел какую-то краску у знакомого.
+                                 </p>
                                 </div>
                             </div>
                         </div>

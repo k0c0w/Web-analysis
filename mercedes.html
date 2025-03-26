@@ -62,7 +62,22 @@
     </style>
     <script>
 
-
+function wouldLikeToBuy(tag) {
+         ym(100335091,'reachGoal',`would-like-to-buy-${tag}`);
+         fetch(`/api/would-like-to-buy?tag=${tag}`, {
+            method: "POST",
+         })
+         .then(response => {
+            if (response.ok) {
+               response.json().then( data=> {
+                  const {value, tag} = data;
+                  const counter = document.getElementById("counter")
+                  counter.innerText = value
+               })
+            }
+         })
+         .catch();
+       }  
         
         function openFullscreen(src) {
             const fullscreen = document.getElementById('fullscreenImg');
@@ -171,6 +186,21 @@
         });
         });
 
+        fetch("api/would-like-to-buy?tag=mercedes")
+         .then(response => {
+           if (response.ok) {
+            response.json().then(data => {
+               const {value }=data
+               const counter = document.getElementById("counter")
+               counter.innerText = value
+            })
+               
+           }
+
+         })
+         .catch(error => {
+           console.error('There was a problem with the fetch operation:', error);
+         });
         fetch("api/comments?tag=mercedes-e500")
          .then(response => {
             let content
@@ -321,6 +351,16 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="gen-single-movie-info">
+                                 <div class="gen-single-meta-holder" style="align-items: center;">
+                                    <ul>
+                                        <li class="gen-sen-rating" onclick="wouldLikeToBuy('mercedes')">Хочу купить</li>
+                                        <li>
+                                            <i class="fas fa-eye">
+                                            </i>
+                                            <span><span id="counter">0</span> Хотели бы купить</span>
+                                        </li>
+                                    </ul>
+                                 </div>
                                     <p>
                                        Мерседес. Вторая попытка покрасить машинку, очень даже удачная. Хотел поставить на него AMG диски, но по опросам, людям понравились эти аля Enikey. Все таки я поставлю AMG.
                                        <br/>
